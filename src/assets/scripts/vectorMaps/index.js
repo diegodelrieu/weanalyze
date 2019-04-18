@@ -25,7 +25,7 @@ export default (function () {
       `);
 
       $('#vmap').vectorMap({
-        map: 'world_mill',
+        map: 'cn_mill',
         backgroundColor: '#fff',
         borderColor: '#fff',
         borderOpacity: 0.25,
@@ -48,32 +48,16 @@ export default (function () {
           },
         },
 
-        markers : [{
-          latLng : [21.00, 78.00],
-          name : 'INDIA : 350',
-        }, {
-          latLng : [-33.00, 151.00],
-          name : 'Australia : 250',
-        }, {
-          latLng : [36.77, -119.41],
-          name : 'USA : 250',
-        }, {
-          latLng : [55.37, -3.41],
-          name : 'UK   : 250',
-        }, {
-          latLng : [25.20, 55.27],
-          name : 'UAE : 250',
-        }],
         series: {
           regions: [{
             values: {
-              'US': 298,
-              'SA': 200,
-              'AU': 760,
-              'IN': 200,
-              'GB': 120,
+              'CN-46': 16.5,
+              'CN-44': 200,
+              'CN-62': 760,
+              'CN-21': 200,
+              'CN-37': 2,
             },
-            scale: ['#03a9f3', '#02a7f1'],
+            scale: ['#C8EEFF', '#0071A4'],
             normalizeFunction: 'polynomial',
           }],
         },
