@@ -16,4 +16,7 @@ import './fullcalendar';
 import './googleMaps';
 import './utils';
 import './test';
-import './maptest.js'
+import './maptest.js';
+import './totalPageViews.js';
+import './uniqueVisitors.js';
+import './bounceRate.js';

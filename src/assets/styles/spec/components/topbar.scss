@@ -16,21 +16,16 @@
   padding: 0;
   position: fixed;
   transition: all 0.2s ease;
-  width: calc(100% - #{$offscreen-size});
+  width: 100vw;
   z-index: 800;
 
-  @include to($breakpoint-md) {
-    width: 100%;
-  }
 
-  @include between($breakpoint-md, $breakpoint-xl) {
-    width: calc(100% - #{$collapsed-size});
-  }
 
   .header-container {
     @include clearfix;
 
     height: $header-height;
+    width: 100vw;
 
     .nav-left,
     .nav-right {
