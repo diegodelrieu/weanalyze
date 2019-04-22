@@ -19,7 +19,7 @@ export default (fetch(targetUrl)
     }
   });
     bounceRate = 100 - ((customerLogin * 100) / customerOnLoad);
-    console.log(bounceRate)
+    // console.log(bounceRate)
     userCounter.insertAdjacentHTML("afterbegin", `${bounceRate}%`);
   })
 );
