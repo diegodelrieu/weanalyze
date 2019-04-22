@@ -38,6 +38,111 @@ const mapProvinces = {
   "Liaoning":"CN-21"
 }
 
+const emptyLib = {
+        "CN-32": 0,
+        "CN-52": 0,
+        "CN-53": 0,
+        "CN-50": 0,
+        "CN-51": 0,
+        "CN-31": 0,
+        "CN-54": 0,
+        "CN-33": 0,
+        "CN-15": 0,
+        "CN-14": 0,
+        "CN-": 0,
+        "CN-12": 0,
+        "CN-13": 0,
+        "CN-11": 0,
+        "CN-34": 0,
+        "CN-36": 0,
+        "CN-37": 0,
+        "CN-41": 0,
+        "CN-43": 0,
+        "CN-42": 0,
+        "CN-45": 0,
+        "CN-44": 0,
+        "CN-46": 0,
+        "CN-65": 0,
+        "CN-64": 0,
+        "CN-63": 0,
+        "CN-62": 0,
+        "CN-61": 0,
+        "CN-23": 0,
+        "CN-22": 0,
+        "CN-21": 0
+      }
+
+let obj = {};
+
+var targetUrl = "http://haoshihui.wogengapp.cn/api/v1/users";
+
+const incrementRegion = () => (fetch(targetUrl)
+  .then(response => response.json())
+  .then((data) => {
+    data.users.forEach((user) => {
+      let userProvince = user.province;
+
+      Object.entries(mapProvinces).forEach((province) => {
+        if (province[0] === userProvince) {
+          userProvince = province[1];
+          if (obj[userProvince]){
+            console.log(obj.userProvince)
+            obj[userProvince] += 1
+          } else {
+            obj[userProvince] = 1
+          }
+          console.log(obj)
+        }
+      });
+    });
+  })
+);
+
+let mapData = {
+  map: 'cn_mill',
+  backgroundColor: '#fff',
+  borderColor: '#fff',
+  borderOpacity: 0.25,
+  borderWidth: 0,
+  color: '#e6e6e6',
+  regionStyle : {
+    initial : {
+      fill : '#e4ecef',
+    },
+  },
+
+  markerStyle: {
+    initial: {
+      r: 7,
+      'fill': '#fff',
+      'fill-opacity':1,
+      'stroke': '#000',
+      'stroke-width' : 2,
+      'stroke-opacity': 0.4,
+    },
+  },
+
+  series: {
+    regions: [{
+      values: obj,
+      scale: ['#C8EEFF', '#0071A4'],
+      normalizeFunction: 'polynomial',
+    }],
+  },
+  hoverOpacity: null,
+  normalizeFunction: 'linear',
+  zoomOnScroll: false,
+  scaleColors: ['#b6d6ff', '#005ace'],
+  selectedColor: '#c9dfaf',
+  selectedRegions: [],
+  enableZoom: false,
+  hoverColor: '#fff',
+};
+
+
+
+
+
 export default (function () {
   const vectorMapInit = () => {
     if ($('#world-map-marker').length > 0) {
@@ -58,85 +163,15 @@ export default (function () {
         </div>
         `);
 
-      $('#vmap').vectorMap({
-        map: 'cn_mill',
-        backgroundColor: '#fff',
-        borderColor: '#fff',
-        borderOpacity: 0.25,
-        borderWidth: 0,
-        color: '#e6e6e6',
-        regionStyle : {
-          initial : {
-            fill : '#e4ecef',
-          },
-        },
-
-        markerStyle: {
-          initial: {
-            r: 7,
-            'fill': '#fff',
-            'fill-opacity':1,
-            'stroke': '#000',
-            'stroke-width' : 2,
-            'stroke-opacity': 0.4,
-          },
-        },
-
-        series: {
-          regions: [{
-            values: {
-              "CN-32": 0,
-              "CN-52": 0,
-              "CN-53": 0,
-              "CN-50": 0,
-              "CN-51": 0,
-              "CN-31": 0,
-              "CN-54": 0,
-              "CN-33": 0,
-              "CN-15": 0,
-              "CN-14": 0,
-              "CN-": 0,
-              "CN-12": 0,
-              "CN-13": 0,
-              "CN-11": 0,
-              "CN-34": 0,
-              "CN-36": 0,
-              "CN-37": 0,
-              "CN-41": 0,
-              "CN-43": 0,
-              "CN-42": 0,
-              "CN-45": 0,
-              "CN-44": 0,
-              "CN-46": 0,
-              "CN-65": 0,
-              "CN-64": 0,
-              "CN-63": 0,
-              "CN-62": 0,
-              "CN-61": 0,
-              "CN-23": 0,
-              "CN-22": 0,
-              "CN-21": 0
-            },
-            scale: ['#C8EEFF', '#0071A4'],
-            normalizeFunction: 'polynomial',
-          }],
-        },
-        hoverOpacity: null,
-        normalizeFunction: 'linear',
-        zoomOnScroll: false,
-        scaleColors: ['#b6d6ff', '#005ace'],
-        selectedColor: '#c9dfaf',
-        selectedRegions: [],
-        enableZoom: false,
-        hoverColor: '#fff',
-      });
+      $('#vmap').vectorMap(mapData);
     }
   };
-
+  incrementRegion();
   vectorMapInit();
+  //setInterval(() => { incrementRegion() }, 1000);
+  //setInterval(() => { vectorMapInit() }, 1000);
   $(window).resize(debounce(vectorMapInit, 150));
 })();
-
 
 
 

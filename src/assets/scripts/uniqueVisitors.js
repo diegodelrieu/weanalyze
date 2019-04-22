@@ -2,7 +2,7 @@ import * as $ from 'jquery';
 const userCounter = document.querySelector("#uniqueVisitors");
 
 
-var targetUrl = "http://localhost:4000/api/v1/users";
+var targetUrl = "http://haoshihui.wogengapp.cn/api/v1/users";
 
 let totalPage = 0;
 

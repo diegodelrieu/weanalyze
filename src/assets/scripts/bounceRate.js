@@ -2,7 +2,7 @@ import * as $ from 'jquery';
 const userCounter = document.querySelector("#bounceRate");
 
 
-var targetUrl = "http://localhost:4000/api/v1/events";
+var targetUrl = "http://haoshihui.wogengapp.cn/api/v1/events";
 
 let customerOnLoad = 0;
 let customerLogin = 0;
