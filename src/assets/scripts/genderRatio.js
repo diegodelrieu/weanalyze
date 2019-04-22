@@ -8,7 +8,7 @@ var targetUrl = "http://haoshihui.wogengapp.cn/api/v1/users";
 let femaleCount = 0;
 let maleCount = 0;
 
-export default setTimeout((fetch(targetUrl)
+export default (fetch(targetUrl)
   .then(response => response.json())
   .then((data) => {
     console.log(data)
@@ -25,7 +25,8 @@ export default setTimeout((fetch(targetUrl)
     genderRatio = `${genderRatio}`;
     console.log(genderRatio);
     ratioCounter.setAttribute("data-percent", genderRatio);
+    $('.easy-pie-chart').data('easyPieChart').update(genderRatio);
   })
-), 3000);
+)
 
 
