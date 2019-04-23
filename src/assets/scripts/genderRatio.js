@@ -19,11 +19,10 @@ export default (fetch(targetUrl)
         maleCount += 1
       }
     })
-    console.log(maleCount);
-    console.log(femaleCount);
+
     let genderRatio = ((femaleCount) / (femaleCount + maleCount)) * 100;
     genderRatio = `${genderRatio}`;
-    console.log(genderRatio);
+    // console.log(genderRatio);
     ratioCounter.setAttribute("data-percent", genderRatio);
     $('.easy-pie-chart').data('easyPieChart').update(genderRatio);
   })

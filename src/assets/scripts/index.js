@@ -21,3 +21,5 @@ import './totalPageViews.js';
 import './uniqueVisitors.js';
 import './bounceRate.js';
 import './genderRatio.js';
+import './dailystats.js';
+import './charts/chartJS';
